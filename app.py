@@ -26,12 +26,12 @@ load_dotenv()
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
 app.config.update(
-    MAIL_SERVER='mail.lindner-leipzig.de',
+    MAIL_SERVER='xxx',
     MAIL_PORT=465,
     MAIL_USE_TLS=True,
-    MAIL_USERNAME='philipp@lindner-leipzig.de',
+    MAIL_USERNAME='xxx',
     MAIL_PASSWORD=os.getenv("EMAIL_PASS"),  # z. B. Google App-Passwort
-    MAIL_DEFAULT_SENDER='NotenArchivSystem@lindner-leipzig.de'
+    MAIL_DEFAULT_SENDER='xxx'
 )
 
 mail = Mail(app)
@@ -246,8 +246,8 @@ def internal_error(error):
     return render_template("error.html", message=user_message), 500
 
 def send_error_email(subject, body):
-    sender = "NoderArchivSystem@lindner-leipzig.de"
-    recipient = "NAS_Error@lindner-leipzig.de"
+    sender = "xxxx"
+    recipient = "xxx"
     password = os.getenv("EMAIL_PASS")
     
     msg = MIMEText(body)
@@ -256,7 +256,7 @@ def send_error_email(subject, body):
     msg["To"] = recipient
 
     try:
-        with smtplib.SMTP_SSL("mail.lindner-leipzig.de", 465) as server:
+        with smtplib.SMTP_SSL("xxx", 465) as server:
             server.login(sender, password)
             server.send_message(msg)
     except Exception as e:
