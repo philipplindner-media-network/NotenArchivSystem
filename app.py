@@ -303,7 +303,7 @@ def confirm_email(token):
 
 # Admin Dashboard
 @app.route("/admin")
-#@admin_required
+@admin_required
 def admin_dashboard():
     conn = mysql.connector.connect(**db_config)
     cur = conn.cursor(dictionary=True)
@@ -364,7 +364,7 @@ def edit_note(note_id):
     return render_template("edit_note.html", note=note)
 
 @app.route("/admin/delete_user/<int:user_id>")
-#@admin_required
+@admin_required
 def delete_user(user_id):
     conn = mysql.connector.connect(**db_config)
     cur = conn.cursor()
