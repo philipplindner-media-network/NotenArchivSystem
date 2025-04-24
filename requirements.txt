@@ -1,0 +1,9 @@
+Flask==2.2.5
+mysql-connector-python==8.0.33
+Werkzeug==2.2.5
+qrcode==7.4.2
+python-barcode==0.14.0
+reportlab==3.6.13
+python-dotenv==1.0.0
+itsdangerous==2.1.2
+Flask-Mail==0.9.1
