@@ -1,0 +1,41 @@
+<h1>Admin-Übersicht</h1>
+
+<h2>Benutzer</h2>
+<table border="1">
+    <tr><th>ID</th><th>Benutzername</th><th>Email</th><th>Rolle</th><th>Aktionen</th></tr>
+    {% for user in users %}
+    <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.nutzername }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.rolle }}</td>
+        <td><a href="{{ url_for('edit_user', user_id=user.id) }}">Bearbeiten</a> | <a href="{{ url_for('delete_user', user_id=user.id) }}" onclick="return confirm('Wirklich löschen?')">Löschen</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h2>Noteneinträge</h2>
+<table border="1">
+    <tr><th>ID</th><th>Name</th><th>Ordner</th><th>Aktionen</th></tr>
+    {% for note in notes %}
+    <tr>
+        <td>{{ note.id }}</td>
+        <td>{{ note.titel }}</td>
+        <td>{{ note.ordner }}</td>
+        <td><a href="{{ url_for('edit_note', note_id=note.id) }}">Bearbeiten</a> | <a href="{{ url_for('delete_note', note_id=note.id) }}" onclick="return confirm('Wirklich löschen?')">Löschen</a></td>
+
+    </tr>
+    {% endfor %}
+</table>
+<h2>PayPal-Zahlungen</h2>
+<table>
+  <tr><th>Name</th><th>Email</th><th>Betrag</th><th>Datum</th></tr>
+  {% for zahlung in zahlungen %}
+    <tr>
+      <td>{{ zahlung.payer_name }}</td>
+      <td>{{ zahlung.payer_email }}</td>
+      <td>{{ zahlung.amount }}</td>
+      <td>{{ zahlung.payment_date }}</td>
+    </tr>
+  {% endfor %}
+</table>

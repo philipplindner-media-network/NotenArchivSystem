@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Geteilte Notiz</title>
+</head>
+<body>
+    <h1>Geteilte Notiz</h1>
+
+    {% if note %}
+        <p><strong>Name:</strong> {{ note['name'] }}</p>
+        <p><strong>Beschreibung:</strong> {{ note['beschreibung'] }}</p>
+        <p><a href="{{ url_for('static', filename='uploads/' ~ note['dateiname']) }}" target="_blank">PDF anzeigen</a></p>
+    {% else %}
+        <p>Diese Notiz existiert nicht oder wurde nicht freigegeben.</p>
+    {% endif %}
+</body>
+</html>
