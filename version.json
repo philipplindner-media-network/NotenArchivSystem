@@ -1,0 +1,8 @@
+{
+  "version": "1.2.0",
+  "changelog": [
+    "Neues Spenden-Feature integriert",
+    "Admin-Dashboard optimiert",
+    "Fehlerbehebungen im PDF-Export"
+  ]
+}
