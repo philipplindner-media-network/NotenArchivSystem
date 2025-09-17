@@ -35,6 +35,9 @@ app.config.update(
     MAIL_DEFAULT_SENDER='xxx'
 )
 
+with open("version.json") as v:
+    version_info = json.load(v)
+
 mail = Mail(app)
 s = URLSafeTimedSerializer(app.secret_key)
 UPLOAD_FOLDER = 'static/uploads'
@@ -297,7 +300,7 @@ def shared_note(token):
 
 @app.route('/info')
 def info():
-    return render_template('info.html')
+    return render_template('info.html', version=version_info["version"], changelog=version_info["changelog"])
 
 @app.route('/confirm/<token>')
 def confirm_email(token):
