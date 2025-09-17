@@ -396,20 +396,32 @@ def delete_note(note_id):
     flash("Notiz gelöscht.")
     return redirect(url_for("admin_dashboard"))
 
+@app.route("/spenden", methods=["GET", "POST"])
+@login_required
+def spenden():
+    if request.method == "POST":
+        betrag = request.form["betrag"]
+        # Hier ggf. weitere Logik für PayPal-Spende einfügen
+        # Beispiel: Weiterleitung zu PayPal mit Betrag
+        session["spenden_betrag"] = betrag
+        return redirect(url_for("pay"))  # oder gleich zu PayPal-Checkout
+    return render_template("spenden.html")  # Neues/angepasstes Template
+
 @app.route("/pay")
 @login_required
 def pay():
-    return render_template("pay.html")
+    betrag = session.get("spenden_betrag", "5")  # Standardwert als Beispiel
+    return render_template("pay.html", betrag=betrag)
 
 @app.route("/payment_success")
 @login_required
 def payment_success():
-    return "Vielen Dank für deine Zahlung!"
+    return "Vielen Dank für deine Spende!"
 
 @app.route("/payment_cancelled")
 @login_required
 def payment_cancelled():
-    return "Zahlung abgebrochen."
+    return "Spende leider abgebrochen."
 
 @app.route('/paypal/success', methods=['POST'])
 @login_required
