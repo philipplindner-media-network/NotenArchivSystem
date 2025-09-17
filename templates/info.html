@@ -32,6 +32,13 @@
             <li>Fehlerbenachrichtigung per E-Mail an den Administrator (bei internen Fehlern)</li>
             <li>Responsive Web-GUI mit klarer Benutzeroberfläche</li>
         </ul>
+        <h2 class="border-bottom pb-2">Version: {{ version }}</h2>
+            <h3>Changelog</h3>
+            <ul>
+              {% for eintrag in changelog %}
+              <li>{{ eintrag }}</li>
+              {% endfor %}
+            </ul>
 
         <p class="mt-4">Weitere Funktionen sind geplant, z. B. Suchfunktionen, Schlagwörter, oder Integration in andere Plattformen.</p>
 
