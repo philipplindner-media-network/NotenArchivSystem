@@ -7,3 +7,5 @@ reportlab
 python-dotenv
 itsdangerous
 Flask-Mail
+Pillow
+.
